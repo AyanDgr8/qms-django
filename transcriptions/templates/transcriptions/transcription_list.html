@@ -1,0 +1,24 @@
+<!-- transcriptions_project/transcriptions/templates/transcriptions/transcription_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transcriptions</title>
+</head>
+<body>
+    <h1>Transcriptions</h1>
+    <ul>
+        {% for transcription in transcriptions %}
+            <li>{{ transcription.file_name }} - {{ transcription.date_time }}</li>
+            <p>Agent Transcription: {{ transcription.agent_transcription }}</p>
+            <p>Agent Translation: {{ transcription.agent_translation }}</p>
+            <p>Agent Sentiment Score: {{ transcription.agent_sentiment_score }}</p>
+            <p>Customer Transcription: {{ transcription.customer_transcription }}</p>
+            <p>Customer Translation: {{ transcription.customer_translation }}</p>
+            <p>Customer Sentiment Score: {{ transcription.customer_sentiment_score }}</p>
+            <p>Abusive Count: {{ transcription.abusive_count }}</p>
+            <p>Contains Financial Info: {{ transcription.contains_financial_info }}</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

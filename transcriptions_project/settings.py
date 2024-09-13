@@ -27,16 +27,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "transcriptions",
+    "corsheaders",
+    "rest_framework",
+
 ]
 
 MIDDLEWARE = [
@@ -47,9 +49,18 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "transcriptions_project.urls"
+
+# Allow all domains to make requests to your API (for development)
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
 
 TEMPLATES = [
     {
@@ -76,14 +87,13 @@ WSGI_APPLICATION = "transcriptions_project.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',  # your MySQL DB name
-        'USER': 'root',  # your MySQL DB username
-        'PASSWORD': 'Ayan@1012',  # your MySQL DB password
-        'HOST': 'localhost',  # or your MySQL host
-        'PORT': '3005',  # or your MySQL port (default is 3306)
+        'NAME': 'mycode', 
+        'USER': 'root', 
+        'PASSWORD': 'Ayan@1012',  
+        'HOST': 'localhost', 
+        'PORT': '3306', 
     }
 }
-
 
 
 # Password validation
@@ -104,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -121,6 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
