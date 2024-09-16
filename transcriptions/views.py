@@ -6,6 +6,14 @@ from .models import Transcription
 from django.db.models import Q
 
 
+def get_word_groups(request):
+    word_groups = {
+        "positive": ["happy", "good", "joyful", "amazing", "best"],
+        "negative": ["angry", "hate", "bad", "terrible", "abusive", "not"],
+        "neutral": ["okay", "fine", "average", "normal"]
+    }
+    return JsonResponse(word_groups)
+
 # Get all transcriptions
 def get_transcriptions(request):
     transcriptions = Transcription.objects.all()
